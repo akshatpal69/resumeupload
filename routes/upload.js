@@ -1,9 +1,19 @@
 const express = require("express")
 const router = express.Router()
 const connection = require('../database')
+const path = require("path");
 // const path = require("path")
 const multer = require("multer")
 
+
+let fileInfo
+var directoryPath = path.join(__dirname, 'public/files');
+fs.readdir(directoryPath, function (err, files) {
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    }
+    fileInfo = files
+});
 const multerStorage = multer.diskStorage({
     destination: (req, file, next) => {
         next(null, "public/files");
@@ -41,7 +51,7 @@ router.post("/upload", upload.single("resume"), async (req, res) => {
     const query = `Insert Into user(name, date, country, filename, timestamp) Values("${name}","${date}","${country}","${filename}","${timestamp}");`
     connection.query(query, (err, result) => {
         if (err) {
-            return res.status(500).json({ error: err.message });
+            return res.status(500).json({ error: err.code });
         }
         res.status(200).json({ response: 'ok' });
     })
@@ -52,13 +62,14 @@ router.post("/upload", upload.single("resume"), async (req, res) => {
 
 router.post("/download", async (req, res) => {
     const query = `select * from user`
+    console.log(fileInfo.length)
+    // return res.status(200).json({response:fileInfo})
     connection.query(query, (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.status(200).json({ response: result });
+        res.status(200).json({ response: result, fileInfo });
     })
 })
-
 
 module.exports = router
