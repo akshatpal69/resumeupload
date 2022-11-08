@@ -8,7 +8,7 @@ const uploadRoute = require("./routes/upload")
 // const morgan = require('morgan')
 //middleware
 app.use(express.json())
-app.use(morgan("dev"))
+// app.use(morgan("dev"))
 app.use(cors({ origin: "*" }));
 
 
