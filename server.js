@@ -21,5 +21,5 @@ app.use("/", express.static(path.join(__dirname, "public")))
 
 
 app.listen(port, () => {
-  console.log("app running on http://localhost:80")
+  console.log("app running on https://resumeuploadbyakshat.herokuapp.com/")
 })
