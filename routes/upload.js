@@ -4,7 +4,6 @@ const connection = require('../database')
 const path = require("../path");
 let fs = require('fs');
 
-// const path = require("path")
 const multer = require("multer")
 
 
@@ -15,6 +14,7 @@ fs.readdir(directoryPath, function (err, files) {
         return console.log('Unable to scan directory: ' + err.message);
     }
     fileInfo = files
+    console.log(fileInfo)
     
 });
 const multerStorage = multer.diskStorage({
