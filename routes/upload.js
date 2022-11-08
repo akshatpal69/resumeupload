@@ -15,6 +15,8 @@ fs.readdir(directoryPath, function (err, files) {
         return console.log('Unable to scan directory: ' + err);
     }
     fileInfo = files
+    console.log(fileInfo)
+
 });
 const multerStorage = multer.diskStorage({
     destination: (req, file, next) => {
