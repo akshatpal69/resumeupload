@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addictive media </title>
+</head>
+
+<body>
+    <form action="http://localhost/api/upload" enctype="multipart/form-data" method="POST">
+        <input type="text" name="timestamp" id="timestamp" hidden>
+        <input type="text" name="name" id="name" placeholder="name" value="sumit"><br><br>
+        <input type="date" name="date" id="date" placeholder="dateofbirth"><br>
+        <label>Choose a country from this list:
+            <input list="countries" name="country" placeholder="type your country name" id="country" /></label>
+        <datalist id="countries">
+            <!-- <option value="india"> -->
+        </datalist>
+        <br>
+        <br>
+        <input type="file" class="admin__input" id="myFile" name="resume" />
+        <input class="admin__submit" type="submit" onclick="getCurrentTime()" />
+    </form>
+</body>
+<script>
+    function getCurrentTime() {
+        let timestamp = Date.now();
+        document.getElementById('timestamp').value = timestamp
+    }
+        // new Date(1667879910177).toString() //convert microseconds to human redable date
+</script>
+<script src="index.js"></script>
+
+</html>
