@@ -62,7 +62,7 @@ router.post("/upload", upload.single("resume"), async (req, res) => {
 });
 
 
-router.post("/download", async (req, res) => {
+router.get("/download", async (req, res) => {
     const query = `select * from user`
     console.log(fileInfo.length)
     // return res.status(200).json({response:fileInfo})
