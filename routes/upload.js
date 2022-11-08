@@ -9,14 +9,13 @@ const multer = require("multer")
 
 
 let fileInfo
-var directoryPath = path.join(__dirname, 'public/files');
+var directoryPath = path.join(__dirname+'public', 'files');
 fs.readdir(directoryPath, function (err, files) {
     if (err) {
         return console.log('Unable to scan directory: ' + err);
     }
     fileInfo = files
-    console.log(fileInfo)
-
+    
 });
 const multerStorage = multer.diskStorage({
     destination: (req, file, next) => {
