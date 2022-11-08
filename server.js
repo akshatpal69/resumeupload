@@ -4,6 +4,7 @@ const port = process.env.PORT || 3000;
 const country_list = require('./countries')
 const path = require("path")
 const cors = require('cors')
+let fs = require('fs');
 const uploadRoute = require("./routes/upload")
 // const morgan = require('morgan')
 //middleware
