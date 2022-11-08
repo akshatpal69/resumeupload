@@ -2,6 +2,8 @@ const express = require("express")
 const router = express.Router()
 const connection = require('../database')
 const path = require("path");
+let fs = require('fs');
+
 // const path = require("path")
 const multer = require("multer")
 
