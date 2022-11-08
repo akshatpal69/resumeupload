@@ -19,11 +19,11 @@ fs.readdir(directoryPath, function (err, files) {
 });
 const multerStorage = multer.diskStorage({
     destination: (req, file, next) => {
-        next(null, "public/files");
+        next(null, "public");
     },
     filename: (req, file, next) => {
         const ext = file.mimetype.split("/")[1];
-        next(null, `RESUME-${file.originalname}-${Date.now()}.${ext}`);
+        next(null, `files/RESUME-${file.originalname}-${Date.now()}.${ext}`);
     },
 });
 const multerFilter = (req, file, next) => {
@@ -65,13 +65,13 @@ router.post("/upload", upload.single("resume"), async (req, res) => {
 
 router.get("/download", async (req, res) => {
     const query = `select * from user`
-    console.log(fileInfo.length)
+    // console.log(fileInfo.length)
     // return res.status(200).json({response:fileInfo})
     connection.query(query, (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.status(200).json({ response: result, fileInfo });
+        res.status(200).json({ response: fileInfo.length });
     })
 })
 
