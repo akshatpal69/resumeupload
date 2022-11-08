@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const connection = require('../database')
-const path = require("path");
+const path = require("../path");
 let fs = require('fs');
 
 // const path = require("path")
@@ -9,10 +9,10 @@ const multer = require("multer")
 
 
 let fileInfo
-var directoryPath = path.join(__dirname+'public', 'files');
+let directoryPath = path+'/public/files'
 fs.readdir(directoryPath, function (err, files) {
     if (err) {
-        return console.log('Unable to scan directory: ' + err);
+        return console.log('Unable to scan directory: ' + err.message);
     }
     fileInfo = files
     
