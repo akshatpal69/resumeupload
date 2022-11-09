@@ -8,14 +8,12 @@ const multer = require("multer")
 
 
 let fileInfo
-let directoryPath = path+'/public/files'
+let directoryPath = path + '/public/files'
 fs.readdir(directoryPath, function (err, files) {
     if (err) {
         return console.log('Unable to scan directory: ' + err.message);
     }
     fileInfo = files
-    console.log(fileInfo)
-    
 });
 const multerStorage = multer.diskStorage({
     destination: (req, file, next) => {
@@ -71,7 +69,8 @@ router.get("/download", async (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.status(200).json({ response: fileInfo.length });
+        userData = result
+        return res.status(200).json({ response: fileInfo, userData  })
     })
 })
 

@@ -1,6 +1,8 @@
 window.onload = fetchCountry()
 async function fetchCountry() {
-    const result = await fetch('https://resumeuploadbyakshat.herokuapp.com/api/countries', {
+    const host = 'http://localhost'
+
+    const result = await fetch(`${host}/api/countries`, {
         method: 'GET',
     }).then((res) => res.json())
     globalCountry = result.country_list
@@ -42,5 +44,5 @@ async function fetchCountry() {
 //     if (result.error) {
 //         // everythign went fine
 //         alert(result.error)
-//     }   
+//     }
 // }

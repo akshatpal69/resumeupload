@@ -1,10 +1,11 @@
 const express = require("express")
 const app = express()
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 80;
 const country_list = require('./countries')
 const path = require("path")
 const cors = require('cors')
 let fs = require('fs');
+const host = 'http://localhost'
 const uploadRoute = require("./routes/upload")
 // const morgan = require('morgan')
 //middleware
@@ -22,5 +23,5 @@ app.use("/", express.static(path.join(__dirname, "public")))
 
 
 app.listen(port, () => {
-  console.log("app running on https://resumeuploadbyakshat.herokuapp.com/")
+  console.log(`app running on ${host}`)
 })
